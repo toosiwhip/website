@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            background-image: url('https://i.pinimg.com/originals/0a/2c/dd/0a2cdd97107381c3df0fcacb30536ec0.png');
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .contact-icons {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 300px;
+        }
+        .icon {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .icon:hover {
+            transform: translateY(-5px);
+        }
+        .speech-bubble {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            color: black;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 12px;
+            white-space: nowrap;
+            display: none;
+            z-index: 1;
+        }
+        .icon:hover .speech-bubble {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-icons">
+        <a href="mailto:statue.scripts@gmail.com" target="_blank" class="icon">
+            <i class="fa fa-envelope" style="font-size: 36px; color: white;"></i>
+            <div class="speech-bubble">statue.scripts@gmail.com</div>
+        </a>
+        <a href="https://discord.gg/6DqpxY6ngc" target="_blank" class="icon">
+            <i class="fab fa-discord" style="font-size: 36px; color: white;"></i>
+            <div class="speech-bubble">Statueware</div>
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statue Ware</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            background-image: url('https://i.pinimg.com/originals/0a/2c/dd/0a2cdd97107381c3df0fcacb30536ec0.png');
+            font-family: monospace;
+            background-color: black;
+            overflow: hidden; 
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            perspective: 1500px; 
+            perspective-origin: center; 
+        }
+        .image {
+            width: 450px; 
+            height: auto; 
+            position: relative;
+            transform-style: preserve-3d; 
+            transition: transform 0.5s ease-out; 
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); 
+            cursor: pointer; 
+            border-radius: 10px; 
+        }
+        .image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 10px; 
+        }
+        .code-container {
+            max-width: 50%; 
+            text-align: center; 
+            padding: 20px;
+            z-index: 10; 
+        }
+        .hub-title {
+            font-size: 36px;
+            font-weight: bold;
+            background: linear-gradient(to right, pink, white); 
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: pulse 2s infinite;
+            margin-bottom: 20px;
+            text-align: center; 
+        }
+        .code-box {
+            position: relative;
+            background-color: #333; 
+            padding: 20px;
+            border-radius: 5px;
+            color: #00ff00;
+            font-family: "Courier New", Courier, monospace;
+            text-align: left; 
+            white-space: pre-wrap; 
+            overflow: hidden; 
+            max-height: 400px; 
+            overflow-y: auto; 
+            margin: auto; 
+        }
+        .code-box code {
+            display: inline-block;
+            text-align: left;
+            width: 100%;
+            max-width: 100%;
+        }
+        .copy-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: white;
+        }
+        .speech-bubble {
+            display: none;
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            color: black;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 12px;
+            white-space: nowrap;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            animation: fadeOut 3s forwards;
+        }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px;
+            border-style: solid;
+            border-color: white transparent transparent transparent;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px pink, 0 0 20px pink, 0 0 25px pink, 0 0 30px pink, 0 0 35px pink;
+            }
+            50% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px pink, 0 0 40px pink, 0 0 50px pink, 0 0 60px pink, 0 0 70px pink;
+            }
+        }
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image" id="image">
+            <img src="https://images-ext-1.discordapp.net/external/YhwCbCHhkzwhr8ET-n8FDZrYbgLJLHZWuPeksEKMMHA/https/i.ibb.co/pw2Z1tT/IMG-7653.jpg?format=webp&width=956&height=592" alt="Statue Ware Image">
+        </div>
+        <div class="code-container">
+            <div class="hub-title">Statue Ware Hub</div>
+            <div class="code-box" id="code-box">
+                <code id="code">loadstring(game:HttpGet("https://raw.githubusercontent.com/toosiwhip/statueware/main/dahoodv1.lua"))()</code>
+                <i class="fa fa-copy copy-icon" onclick="copyCode()"></i>
+                <div class="speech-bubble" id="speech-bubble">Copied!</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var image = document.getElementById("image");
+
+        document.addEventListener("mousemove", function(event) {
+            var mouseX = event.clientX;
+            var windowWidth = window.innerWidth;
+            var percentX = (mouseX / windowWidth - 0.5) * 100; 
+
+            image.style.transform = "rotateY(" + percentX + "deg)";
+        });
+
+        function copyCode() {
+            var code = document.getElementById("code").innerText;
+            navigator.clipboard.writeText(code).then(function() {
+                var bubble = document.getElementById("speech-bubble");
+                bubble.style.display = 'block';
+                setTimeout(function() {
+                    bubble.style.display = 'none';
+                }, 3000);
+            }).catch(function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
